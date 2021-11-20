@@ -1,0 +1,41 @@
+﻿@model halloween_party.Models.GuestResponse
+@{
+    ViewData["Title"] = "RSVPForm";
+}
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+
+<body>
+    <div class="text-center">
+        <div class="container">
+            <h1 class="main" style="height: auto;">RSVP</h1>
+            <form asp-action="RsvpForm" method="post" class="m-2">
+                <div asp-validation-summary="All"></div>
+                <label asp-for="Name">Your Name</label>
+                <br />
+                <input asp-for="Name" placeholder="Your name.." style="width: 350px;" required>
+                <br />
+                <label asp-for="guestAge">Your Age</label>
+                <br />
+                <input asp-for="guestAge" placeholder="Your age.." style="width: 350px;" required>
+                <br />
+                <label asp-for="arrival">Arrival time</label>
+                <br />
+                <input asp-for="arrival" type="time" style="width: 350px;" required>
+                <br />
+                <label>Request Parking</label>
+                <br />
+                <select asp-for="parking" style="width: 350px;" required>
+                    <option value="" disabled selected>Choose an option</option>
+                    <option value=true>Yes</option>
+                    <option value=false>No</option>
+                </select>
+                <br />
+                <br />
+                <button type="submit" class="btn btn-primary">Submit RSVP</button>
+            </form>
+        </div>
+    </div>
+</body>

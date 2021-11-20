@@ -1,0 +1,33 @@
+﻿@model halloween_party.Models.Repository
+@{
+    ViewData["Title"] = "Guests";
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - party_cop</title>
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<div class="text-center">
+    <h1>Here is the list of people attending the party</h1>
+
+    <table class="center-table">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Arrival Time</th>
+            <th>Request Parking</th>
+        </tr>
+        @foreach (halloween_party.Models.GuestResponse r in Repository.Responses)
+        {
+            <tr>
+                <td>@r.Name</td>
+                <td>@r.guestAge</td>
+                <td>@r.arrival</td>
+                <td>@r.parking</td>
+            </tr>
+        }
+    </table>
+</div>

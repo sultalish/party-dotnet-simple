@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - party_cop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body onload="updateClock(); setInterval('updateClock()', 1000 )">
+    @*Show current time using JS*@
+    <script type="text/javascript">function updateClock() {
+            var currentTime = new Date();
+            var currentHours = currentTime.getHours();
+            var currentMinutes = currentTime.getMinutes();
+            var currentSeconds = currentTime.getSeconds();
+            currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
+            currentSeconds = (currentSeconds < 10 ? "0" : "") + currentSeconds;
+            var timeOfDay = (currentHours < 12) ? "AM" : "PM";
+            currentHours = (currentHours > 12) ? currentHours - 12 : currentHours;
+            currentHours = (currentHours == 0) ? 12 : currentHours;
+
+            var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + timeOfDay;
+
+            document.getElementById("clock").firstChild.nodeValue = currentTimeString;
+        }</script>
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-gre bg-grey border-bottom box-shadow mb-3" style="background-color: lightgrey">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-action="Index">Halloween Party</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-action="Guests">Guests</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-action="Gallery">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-action="About">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark">
+                                <span id="clock">&nbsp;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted" style="background-color: lightgrey; text-align:center;">
+        <div class="container">
+            Copyright &copy; 2021 - sultalish's Halloween Party
+            <br />
+            <a href="mailto:alishersultangazin@gmail.com">alishersultangazin@gmail.com</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

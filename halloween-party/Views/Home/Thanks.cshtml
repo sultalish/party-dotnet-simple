@@ -1,0 +1,17 @@
+﻿@model halloween_party.Models.GuestResponse
+@{
+}
+
+<div class="text-center">
+    <p>Thank you, @Model.Name!</p>
+    @if (Model.parking == true)
+    {
+        <div>It's great that you're coming. The drinks are already in the fridge!</div>
+    }
+    else
+    {
+        <div>Your spot is not condirmed because you haven't registered the parking spot!</div>
+    }
+
+    <div>Click <a asp-action="Guests">here</a> to see who is coming</div>
+</div>
